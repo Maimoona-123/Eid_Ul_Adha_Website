@@ -135,6 +135,20 @@ body{font-family:'Cormorant Garamond',serif;background:var(--deep-green);color:v
   .nav-links{display:none;}
   .hamburger{display:flex;}
 }
+/* Show nav links on tablets (600-900px) in small size */
+@media(min-width:600px) and (max-width:900px){
+  .nav-links{display:flex;}
+  .hamburger{display:none;}
+  .nav-links a{font-size:.6rem;padding:.4rem .5rem;letter-spacing:.06em;}
+  .navbar{padding:.8rem 1rem;}
+}
+/* Very small screens — hide links, show hamburger */
+@media(max-width:599px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .navbar{padding:.75rem 1rem;}
+  .nav-logo-text{font-size:.9rem;}
+}
 
 /* ========== HERO ========== */
 .hero{
@@ -201,63 +215,7 @@ body{font-family:'Cormorant Garamond',serif;background:var(--deep-green);color:v
 .mosque-scene{width:100%;max-width:440px;}
 .mosque-scene svg{width:100%;height:auto;filter:drop-shadow(0 20px 60px rgba(201,168,76,.12));}
 
-/* ========== LIVE COUNTDOWN ========== */
-/* BIG URGENT COUNTDOWN - Eid is TOMORROW */
-.countdown-section{
-  background:linear-gradient(135deg,var(--deep-green),#091a0f);
-  padding:3.5rem 2rem;position:relative;overflow:hidden;
-  border-top:1px solid rgba(201,168,76,.15);border-bottom:1px solid rgba(201,168,76,.15);
-}
-.countdown-section::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 50% 50%,rgba(201,168,76,.06),transparent 70%);
-}
-.countdown-inner{max-width:900px;margin:0 auto;text-align:center;position:relative;z-index:2;}
-.cd-header{font-family:'Noto Nastaliq Urdu',serif;font-size:clamp(1.2rem,3vw,2rem);color:var(--gold);margin-bottom:.3rem;line-height:1.8;}
-.cd-sub{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:900;color:var(--cream);margin-bottom:.4rem;}
-.cd-date{font-size:clamp(.8rem,2vw,1rem);color:var(--sage);letter-spacing:.15em;text-transform:uppercase;margin-bottom:2.5rem;font-weight:600;}
 
-/* Pulse urgency banner */
-.cd-urgent{
-  display:inline-flex;align-items:center;gap:.5rem;
-  padding:.4rem 1.2rem;background:rgba(201,168,76,.15);
-  border:1px solid var(--gold);color:var(--gold);
-  font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  margin-bottom:2rem;animation:urgentP 1.5s ease-in-out infinite;
-}
-@keyframes urgentP{0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,.4);}50%{box-shadow:0 0 0 8px rgba(201,168,76,0);}}
-
-.cd-units{display:flex;gap:1.5rem;justify-content:center;align-items:center;flex-wrap:wrap;}
-.cd-unit{text-align:center;min-width:90px;}
-.cd-num-wrap{
-  position:relative;width:90px;height:90px;margin:0 auto .6rem;
-  background:rgba(13,43,26,.8);border:1.5px solid rgba(201,168,76,.3);
-  display:flex;align-items:center;justify-content:center;overflow:hidden;
-}
-.cd-num-wrap::before{
-  content:'';position:absolute;top:50%;left:0;right:0;height:1px;
-  background:rgba(201,168,76,.15);
-}
-.cd-num{
-  font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:900;
-  color:var(--gold);line-height:1;transition:transform .3s cubic-bezier(.34,1.56,.64,1);
-  text-shadow:0 0 20px rgba(201,168,76,.4);
-}
-.cd-num.flip{animation:numFlip .35s ease;}
-@keyframes numFlip{0%{transform:translateY(-20px);opacity:0;}100%{transform:translateY(0);opacity:1;}}
-.cd-word{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,168,76,.6);}
-.cd-sep{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;color:rgba(201,168,76,.4);margin-top:-.5rem;}
-
-/* MINI bar under hero */
-.mini-cd{
-  background:var(--gold);padding:.65rem 1.5rem;
-  display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;
-  position:relative;overflow:hidden;
-}
-.mini-cd::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);animation:shine 2.5s linear infinite;}
-@keyframes shine{from{transform:translateX(-100%);}to{transform:translateX(100%);}}
-.mini-cd-label{font-size:.75rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--deep-green);}
-.mini-cd-time{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:var(--deep-green);}
 
 /* ========== SECTIONS COMMON ========== */
 section{padding:5.5rem 1.5rem;}
@@ -538,21 +496,13 @@ section{padding:5.5rem 1.5rem;}
   section{padding:4rem 1.25rem;}
   .mood-grid{grid-template-columns:repeat(2,1fr);}
   .quiz-opts{grid-template-columns:1fr;}
-  .cd-unit{min-width:70px;}
-  .cd-num-wrap{width:70px;height:70px;}
-  .cd-sep{font-size:1.8rem;}
   .wish-form{flex-direction:column;}
   .wish-input,.wish-select{width:100%;}
   .sadaqah-box{padding:2.25rem 1.25rem;}
   .ibrahim-section{padding:4.5rem 1.25rem;}
-  .countdown-section{padding:2.5rem 1.25rem;}
-  .cd-units{gap:1rem;}
 }
 @media(max-width:400px){
   .mood-grid{grid-template-columns:repeat(2,1fr);}
-  .cd-unit{min-width:58px;}
-  .cd-num-wrap{width:58px;height:58px;}
-  .cd-num{font-size:1.7rem;}
   .greet-cards{grid-template-columns:1fr;}
 }
 </style>
@@ -607,13 +557,11 @@ section{padding:5.5rem 1.5rem;}
     <span class="nav-logo-text">Eid ul Adha</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#countdown">Countdown</a></li>
+    <li><a href="#significance">About</a></li>
     <li><a href="#ibrahim">Story</a></li>
     <li><a href="#duas">Du'as</a></li>
-    <li><a href="#greetings">Greet</a></li>
+    <li><a href="#greetings">Share</a></li>
     <li><a href="#quiz">Quiz</a></li>
-    <li><a href="#wish">Wish</a></li>
-    <li><a href="#tasbih">Tasbih</a></li>
   </ul>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -623,14 +571,11 @@ section{padding:5.5rem 1.5rem;}
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobile-menu">
   <button class="mobile-menu-close" onclick="toggleMenu()"><i class="ti ti-x"></i></button>
-  <a href="#countdown" onclick="toggleMenu()">⏳ Countdown</a>
+  <a href="#significance" onclick="toggleMenu()">⭐ About</a>
   <a href="#ibrahim" onclick="toggleMenu()">📖 Story</a>
-  <a href="#significance" onclick="toggleMenu()">⭐ Significance</a>
   <a href="#duas" onclick="toggleMenu()">🤲 Du'as</a>
-  <a href="#greetings" onclick="toggleMenu()">💌 Greetings</a>
+  <a href="#greetings" onclick="toggleMenu()">💌 Share</a>
   <a href="#quiz" onclick="toggleMenu()">🧠 Quiz</a>
-  <a href="#wish" onclick="toggleMenu()">✨ Wish Gen</a>
-  <a href="#tasbih" onclick="toggleMenu()">📿 Tasbih</a>
 </div>
 
 <!-- HERO -->
@@ -697,44 +642,7 @@ section{padding:5.5rem 1.5rem;}
 </section>
 
 <!-- MINI LIVE BAR -->
-<div class="mini-cd" id="mini-cd-bar">
-  <span class="mini-cd-label"><i class="ti ti-alarm" style="vertical-align:-2px;margin-right:5px;"></i>Eid ul Adha in</span>
-  <span class="mini-cd-time" id="mini-time">Loading...</span>
-  <span class="mini-cd-label">· June 17, 2026</span>
-</div>
 
-<!-- BIG COUNTDOWN SECTION -->
-<section class="countdown-section" id="countdown">
-  <div class="countdown-inner">
-    <div class="cd-header reveal">عید الاضحی آنے والی ہے!</div>
-    <div class="cd-sub reveal">Eid ul Adha is Almost Here!</div>
-    <div class="cd-date reveal"><i class="ti ti-calendar" style="vertical-align:-2px;margin-right:6px;"></i>June 17, 2026 · 10 Dhul Hijjah 1447</div>
-    <div class="cd-urgent reveal">
-      <i class="ti ti-alarm"></i> LIVE COUNTDOWN · UPDATING EVERY SECOND
-    </div>
-    <div class="cd-units reveal">
-      <div class="cd-unit">
-        <div class="cd-num-wrap"><div class="cd-num" id="cd-days">--</div></div>
-        <div class="cd-word">Days</div>
-      </div>
-      <span class="cd-sep">:</span>
-      <div class="cd-unit">
-        <div class="cd-num-wrap"><div class="cd-num" id="cd-hours">--</div></div>
-        <div class="cd-word">Hours</div>
-      </div>
-      <span class="cd-sep">:</span>
-      <div class="cd-unit">
-        <div class="cd-num-wrap"><div class="cd-num" id="cd-mins">--</div></div>
-        <div class="cd-word">Minutes</div>
-      </div>
-      <span class="cd-sep">:</span>
-      <div class="cd-unit">
-        <div class="cd-num-wrap"><div class="cd-num" id="cd-secs">--</div></div>
-        <div class="cd-word">Seconds</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- IBRAHIM STORY -->
 <section class="ibrahim-section" id="ibrahim">
@@ -952,41 +860,7 @@ section{padding:5.5rem 1.5rem;}
   </div>
 </section>
 
-<!-- TASBIH -->
-<section class="sadaqah-section" id="tasbih">
-  <div class="container">
-    <div class="sadaqah-box reveal">
-      <div class="sadaqah-h">Takbeer Counter 📿</div>
-      <p class="sadaqah-verse">"Allahu Akbar, Allahu Akbar, La ilaha illallah…"<br><em style="font-size:.82rem;opacity:.7;">Recite abundantly on the days of Eid — Sunnah of the Prophet ﷺ</em></p>
-      <div class="progress-wrap">
-        <svg class="progress-ring" width="110" height="110" viewBox="0 0 110 110">
-          <circle class="prb" cx="55" cy="55" r="50"/>
-          <circle class="prbar" id="prbar" cx="55" cy="55" r="50"/>
-        </svg>
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;">
-          <span style="font-size:.62rem;color:var(--sage);font-weight:700;letter-spacing:.1em;text-transform:uppercase;">Goal</span>
-          <span style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--gold);font-weight:700;" id="goal-disp">33</span>
-        </div>
-      </div>
-      <div class="counter-display" id="tasbih-count">0</div>
-      <div class="counter-label" id="cnt-lbl">Takbeers Recited</div>
-      <div class="counter-controls">
-        <button class="counter-btn sm" onclick="changeCount(-10)" title="-10">-10</button>
-        <button class="counter-btn" onclick="changeCount(-1)" title="-1"><i class="ti ti-minus"></i></button>
-        <button class="counter-btn big" onclick="changeCount(1)" title="+1"><i class="ti ti-plus"></i></button>
-        <button class="counter-btn sm" onclick="changeCount(10)" title="+10">+10</button>
-      </div>
-      <div class="goal-row">
-        <span class="goal-lbl">Set Goal:</span>
-        <button class="counter-btn sm" onclick="setGoal(33)" style="width:auto;padding:0 .9rem;">33</button>
-        <button class="counter-btn sm" onclick="setGoal(99)" style="width:auto;padding:0 .9rem;">99</button>
-        <button class="counter-btn sm" onclick="setGoal(100)" style="width:auto;padding:0 .9rem;">100</button>
-        <button class="counter-btn sm" onclick="setGoal(1000)" style="width:auto;padding:0 .9rem;">1000</button>
-      </div>
-      <button class="counter-reset" onclick="resetCount()"><i class="ti ti-refresh" style="vertical-align:-2px;margin-right:4px;"></i>Reset</button>
-    </div>
-  </div>
-</section>
+
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -1064,7 +938,6 @@ function enterSite(){
   ws.classList.add('closing');
   ms.style.display='block';
   setTimeout(()=>ws.style.display='none',1300);
-  startCountdown();
   initObserver();
 }
 setTimeout(()=>{const ws=document.getElementById('welcome-screen');if(ws&&!ws.classList.contains('closing'))enterSite();},15000);
@@ -1075,54 +948,6 @@ function toggleMenu(){
   document.getElementById('mobile-menu').classList.toggle('open');
 }
 
-// ===== LIVE COUNTDOWN — Eid June 17 2026 =====
-// Set Eid date: June 17, 2026 at 6:00 AM PKT (UTC+5)
-const EID_DATE = new Date('2026-06-17T01:00:00Z'); // 6am PKT = 1am UTC
-
-let prevSecs=-1;
-function updateCD(){
-  const now=new Date(),diff=EID_DATE-now;
-
-  // Mini bar
-  const miniEl=document.getElementById('mini-time');
-  if(miniEl){
-    if(diff<=0){miniEl.textContent='Eid Mubarak! 🌙';}
-    else{
-      const d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),s=Math.floor(diff%60000/1000);
-      miniEl.textContent=`${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
-    }
-  }
-
-  // Big countdown
-  const ids=['cd-days','cd-hours','cd-mins','cd-secs'];
-  if(diff<=0){ids.forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='00';});return;}
-  const vals=[
-    Math.floor(diff/86400000),
-    Math.floor(diff%86400000/3600000),
-    Math.floor(diff%3600000/60000),
-    Math.floor(diff%60000/1000)
-  ];
-  const curSec=vals[3];
-  ids.forEach((id,i)=>{
-    const el=document.getElementById(id);
-    if(!el)return;
-    const v=String(vals[i]).padStart(2,'0');
-    if(el.textContent!==v){
-      el.classList.remove('flip');
-      void el.offsetWidth;
-      el.classList.add('flip');
-      el.textContent=v;
-    }
-  });
-}
-function startCountdown(){
-  updateCD();
-  setInterval(updateCD,1000);
-}
-
-// Start mini bar immediately even before entering site
-updateCD();
-setInterval(updateCD,1000);
 
 // ===== SCROLL REVEAL =====
 function initObserver(){
